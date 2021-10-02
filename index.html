@@ -1,55 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hamlet JS</title>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/fontawesome.min.css">
-
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body>
-    <div class="container">
-        <form>
-            <div class="mb-3">
-              <label for="name" class="form-label">Введите имя:</label>
-              <input class="form-control" id="name">
-            </div>
-            <button class="btn btn-primary" type="button" onclick="onStart()">Начать</button>
+  <body class="wrapper">
+    <main class="container">
+      <section>
+        <form class="form" name="form">
+          <label class="form__label">
+            <span class="form__label-text">Введите имя:</span>
+            <input
+              class="form__input form__input--wide"
+              type="text"
+              name="userName"
+            />
+          </label>
+
+          <button class="form__button form__button--wide" name="startButton">
+            Начать
+          </button>
         </form>
-        <form id="form">
-            <div class="mb-3">
-              <label for="x" class="form-label">X:</label>
-              <input class="form-control" id="x">
-            </div>
-            <div class="mb-3">
-                <label for="y" class="form-label">Y:</label>
-                <input class="form-control" id="y">
-            </div>
-            <button class="btn btn-primary" type="button" onclick="send()">Отправить</button>
+
+        <form class="form" name="form">
+          <label class="form__label">
+            <span class="form__label-text">X:</span>
+            <input class="form__input" type="text" name="xValue" />
+          </label>
+
+          <label class="form__label">
+            <span class="form__label-text">Y:</span>
+            <input class="form__input" type="text" name="yValue" />
+          </label>
+
+          <button class="form__button" name="sendButton">Отправить</button>
         </form>
-        <hr class="my-4">
-    <ul class="container" id="list-mssg"></ul>
-    </div>
-    <script>
-      window.onload = function () {
-          var socket = new WebSocket("http://127.0.0.1:8080/ws");
-  
-          socket.onmessage = function (event) {
-              let message = event.data;
-              let ul = document.getElementById('list-mssg')
-  
-              let liLast = document.createElement('li');
-              liLast.innerHTML = message;
-              ul.append(liLast);
-          }
-      }
-  </script>
-    <script src='index.js'></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      </section>
+
+      <section>
+        <ul id="ul"></ul>
+      </section>
+    </main>
+
+    <script src="./assets/js/index.js"></script>
   </body>
 </html>
