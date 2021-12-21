@@ -1,11 +1,11 @@
 'use strict';
 
-/* Блок с идентификаторами */
+/* Identifiers */
 const SERVER_ADDRESS = 'ws://localhost:8080/ws';
 let socket = null;
 let counter = 0;
 
-/* Блок с элементами */
+/* Elements */
 const [startButton] = document.getElementsByName('startButton');
 const [sendButton] = document.getElementsByName('sendButton');
 const [userNameInput] = document.getElementsByName('userName');
@@ -14,14 +14,14 @@ const [yValueInput] = document.getElementsByName('yValue');
 const forms = document.getElementsByName('form');
 const ul = document.getElementById('ul');
 
-/* Блок со слушателями */
+/* Listeners */
 forms.forEach((form) =>
   form.addEventListener('click', (event) => event.stopImmediatePropagation()),
 );
 startButton.addEventListener('click', (event) => connect(event));
 sendButton.addEventListener('click', (event) => sendData(event));
 
-/* Блок с логикой */
+/* Logic */
 function connect(event) {
   event.preventDefault();
   socket = new WebSocket(SERVER_ADDRESS);
@@ -29,11 +29,6 @@ function connect(event) {
   socket.onmessage = drawServerData;
 }
 
-// function drawServerData(serverEvent) {
-//   const serverData = serverEvent.data.text()
-//   console.log(serverData)
-//   serverData.then(data => ul.insertAdjacentHTML('beforeend', `<li>${data}</li>`))
-// }
 function drawServerData(serverEvent) {
   const serverData = serverEvent.data.text()
   serverData.then(data => {
